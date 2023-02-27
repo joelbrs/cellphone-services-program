@@ -1,7 +1,8 @@
 const express = require('express')
+const servicesController = require('./controllers/servicesController')
 
 const router = express.Router()
 
-// router.get('/services', (req, resp) => resp.status(200).send('router is working')) 
+router.get('/services', servicesController.getAll)
 
 module.exports = router
