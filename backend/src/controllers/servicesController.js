@@ -12,7 +12,16 @@ const createService = async (req, res) => {
     return res.status(201).json(createdService)
 }
 
+const deleteService = async (req, res) => {
+    const { id } = req.params
+
+    await servicesModel.deleteService(id)
+
+    return res.status(204).json()
+}
+
 module.exports = {
     getAll,
-    createService
+    createService,
+    deleteService
 }

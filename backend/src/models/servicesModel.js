@@ -17,7 +17,14 @@ const createService = async (service) => {
     return {insertId: createdService.insertId}
 }   
 
+const deleteService = async (id) => {
+    const removedService = await connection.execute('DELETE FROM services WHERE id = ?', [id])
+
+    return removedService
+}
+
 module.exports = {
     getAll,
-    createService
+    createService,
+    deleteService
 }

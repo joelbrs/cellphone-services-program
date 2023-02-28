@@ -6,5 +6,6 @@ const router = express.Router()
 
 router.get('/services', servicesController.getAll)
 router.post('/services', serviceMiddleware.validateBody, servicesController.createService)
+router.delete('/services/:id', servicesController.deleteService)
 
 module.exports = router
