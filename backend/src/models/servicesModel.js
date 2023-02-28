@@ -5,6 +5,11 @@ const getAll = async () => {
     return services
 }
 
+const getById = async (id) => {
+    const service = await connection.execute('SELECT * FROM services WHERE id = ?', [id])
+    return service
+}
+
 const createService = async (service) => {
     const {model, status, inclusionDate, piecePrice, servicePrice, profit, deliveredDate} = service
     const query = 'INSERT INTO services(model, status, inclusionDate, piecePrice, servicePrice, profit, deliveredDate) VALUES (?, ?, ?, ?, ?, ?, ?)'
@@ -26,5 +31,6 @@ const deleteService = async (id) => {
 module.exports = {
     getAll,
     createService,
-    deleteService
+    deleteService,
+    getById
 }

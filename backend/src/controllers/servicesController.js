@@ -6,6 +6,14 @@ const getAll = async (_req, res) => {
     return res.status(200).json(services)
 }
 
+const getById = async (req, res) => {
+    const { id } = req.params
+
+    const [service] = await servicesModel.getById(id)
+    console.log('SERVICE: ', service);
+    return res.status(200).json(service)
+}
+
 const createService = async (req, res) => {
     const createdService = await servicesModel.createService(req.body)
 
@@ -23,5 +31,6 @@ const deleteService = async (req, res) => {
 module.exports = {
     getAll,
     createService,
-    deleteService
+    deleteService,
+    getById
 }
