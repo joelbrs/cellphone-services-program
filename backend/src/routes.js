@@ -8,5 +8,6 @@ router.get('/services', servicesController.getAll)
 router.get('/services/:id', servicesController.getById)
 router.post('/services', serviceMiddleware.validateBody, servicesController.createService)
 router.delete('/services/:id', servicesController.deleteService)
+router.put('/services/:id', serviceMiddleware.validateBody, servicesController.updateService)
    
 module.exports = router

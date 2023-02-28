@@ -28,9 +28,20 @@ const deleteService = async (id) => {
     return removedService
 }
 
+const updateService = async (id, service) => {
+    const query = 'UPDATE services SET model = ?, status = ?, inclusionDate = ?, piecePrice = ?, servicePrice = ?, profit = ?, deliveredDate = ? WHERE id = ?'
+    
+    const { model, status, inclusionDate, piecePrice, servicePrice, profit, deliveredDate } = service
+
+    const updatedService = await connection.execute(query, [model, status, inclusionDate, piecePrice, servicePrice, profit, deliveredDate, id])
+
+    return updatedService
+}
+
 module.exports = {
     getAll,
     createService,
     deleteService,
-    getById
+    getById,
+    updateService
 }

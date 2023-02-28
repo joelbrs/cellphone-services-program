@@ -28,9 +28,18 @@ const deleteService = async (req, res) => {
     return res.status(204).json()
 }
 
+const updateService = async (req, res) => {
+    const { id } = req.params
+
+    await servicesModel.updateService(id, req.body)
+
+    return res.status(204).json()
+}
+
 module.exports = {
     getAll,
     createService,
     deleteService,
-    getById
+    getById,
+    updateService
 }
